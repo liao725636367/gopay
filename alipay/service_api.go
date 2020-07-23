@@ -21,7 +21,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/iGoogle-ink/gopay"
+	"github.com/liao725636367/gopay"
 	"github.com/iGoogle-ink/gotil"
 	xaes "github.com/iGoogle-ink/gotil/aes"
 	"github.com/iGoogle-ink/gotil/xhttp"

@@ -14,7 +14,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/iGoogle-ink/gopay"
+	"github.com/liao725636367/gopay"
 	"github.com/iGoogle-ink/gotil"
 	"github.com/iGoogle-ink/gotil/xhttp"
 )
@@ -82,13 +82,13 @@ func (w *Client) AddCertFilePath(certFilePath, keyFilePath, pkcs12FilePath inter
 //    返回err
 func (w *Client) AddCertFileContent(cert, key , pkcs  []byte ) (err error) {
 
-	if cert == "" {
+	if len(cert) ==0 {
 		return fmt.Errorf(" certFilecert ")
 	}
-	if key == "" {
+	if len(key)==0{
 		return fmt.Errorf(" certFilecert ")
 	}
-	if pkcs == "" {
+	if len(pkcs)==0 {
 		return fmt.Errorf(" certFilecert ")
 	}
 	
