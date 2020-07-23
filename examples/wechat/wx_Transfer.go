@@ -3,8 +3,8 @@ package wechat
 import (
 	"fmt"
 
-	"github.com/iGoogle-ink/gopay"
-	"github.com/iGoogle-ink/gopay/wechat"
+	"github.com/liao725636367/gopay"
+	"github.com/liao725636367/gopay/wechat"
 	"github.com/iGoogle-ink/gotil"
 )
 
