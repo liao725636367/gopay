@@ -75,7 +75,35 @@ func (w *Client) AddCertFilePath(certFilePath, keyFilePath, pkcs12FilePath inter
 	w.mu.Unlock()
 	return nil
 }
+// 添加微信证书 Path 路径
+//    certFilePath：apiclient_cert.pem 路径
+//    keyFilePath：apiclient_key.pem 路径
+//    pkcs12FilePath：apiclient_cert.p12 路径
+//    返回err
+func (w *Client) AddCertFileContent(cert, key , pkcs  []byte ) (err error) {
 
+	if cert == "" {
+		return fmt.Errorf(" certFilecert ")
+	}
+	if key == "" {
+		return fmt.Errorf(" certFilecert ")
+	}
+	if pkcs == "" {
+		return fmt.Errorf(" certFilecert ")
+	}
+	
+	certificate, err := tls.X509KeyPair(cert, key)
+	if err != nil {
+		return fmt.Errorf("tls.LoadX509KeyPair：%w", err)
+	}
+	pkcsPool := x509.NewCertPool()
+	pkcsPool.AppendCertsFromPEM(pkcs)
+	w.mu.Lock()
+	w.certificate = certificate
+	w.certPool = pkcsPool
+	w.mu.Unlock()
+	return nil
+}
 func (w *Client) addCertConfig(certFilePath, keyFilePath, pkcs12FilePath interface{}) (tlsConfig *tls.Config, err error) {
 	if certFilePath == nil && keyFilePath == nil && pkcs12FilePath == nil {
 		w.mu.RLock()
